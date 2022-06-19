@@ -6,8 +6,8 @@
 
 @media only screen and (max-width: 768px) {
     .download-button {
-        height: 7vh;
-        font-size: 3vw;
+        height: 5vh;
+        font-size: 1.5vw;
     }
 
     .download-button > img {
