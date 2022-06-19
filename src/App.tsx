@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import { Button, Nav, Navbar, NavLink } from "react-bootstrap";
+
+import "./css/App.css"
+import DownloadPage from "./pages/DownloadPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Navbar bg={"dark"} variant={"dark"}>
+                <Navbar.Brand className={"ms-5"} href={"/"}>SCISSORS</Navbar.Brand>
+                <Nav className={"me-auto"}>
+                    <NavLink href={"https://github.com/AtlasMediaGroup/Scissors"}>Source</NavLink>
+                    <NavLink href={"https://status.scissors.gg"}>Status</NavLink>
+                </Nav>
+                <Button variant={"light"} className={"me-5 download-button"} href={"/downloads"} style={{borderRadius: "2vh"}}><img src={"https://cdn3.iconfinder.com/data/icons/download-buttons-outline-collection/70/Download-13-512.png"} width={"50px"} alt={"download"}/>  DOWNLOAD</Button>
+            </Navbar>
+            <Routes>
+                <Route path={"/"} element={<HomePage/>}/>
+                <Route path={"/downloads"} element={<DownloadPage/>}/>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

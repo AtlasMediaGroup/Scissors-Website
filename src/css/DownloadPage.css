@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap');
+
+body {
+    margin: 0;
+}
+
+ul > li {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    flex-direction: row;
+    justify-content: space-around;
+    display: flex;
+}
+
+.builds {
+    padding: 0;
+    margin: 0;
+    background-color: #363534;
+}
+
+.builds {
+    flex-direction: column;
+}
+
+.builds > li {
+    padding-left: 1vw;
+    height: 10vh;
+    width: 100%;
+    border-bottom: 2px solid black;
+    display: table;
+    flex-wrap: nowrap;
+}
+
+.builds > li > .btn {
+    border-radius: 1vh !important;
+    position: relative;
+    top: 3vh;
+}
+
+.selected {
+    border-bottom: aqua 1px solid;
+}
+
+.selectable {
+    cursor: pointer;
+}
+
+ul[class^="changes-"] {
+    justify-content: left;
+    flex-direction: column;
+    margin: 0;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+}
+
+ul[class^="changes-"] > li {
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    font-size: 0.75vw;
+    position: relative;
+    bottom: 1vh;
+    left: 2vw;
+    width: 50%;
+}
+
+ul[class^="changes-"] > li > a {
+    text-decoration: none;
+    color: #91ffaf;
+    margin: 0;
+}
+
+.date {
+    display: table-cell;
+    float: right;
+    right: 10vw;
+    position: relative;
+    bottom: 2.5vh;
+}
+
+.nochanges {
+    position: relative;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    ul[class^="changes-"] > li {
+        position: relative;
+        left: 5vw;
+        font-size: 3vw;
+    }
+
+    .date {
+        bottom: 3.75vh;
+    }
+
+    .nochanges {
+        bottom: 1vh;
+    }
+}
