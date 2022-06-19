@@ -12,7 +12,8 @@ export type Build  = {
     number: number,
     url: string,
     changes?: BuildChange[],
-    timestamp?: number
+    timestamp?: number,
+    artifact?: string
 }
 
 export type BuildChange = {
@@ -49,6 +50,13 @@ export function getBuilds(version: string): Promise<Build[]> {
                             change.id = change.id.substring(0, 7)
                         }
                         build.changes = changes
+                        if (value1.data.artifacts) {
+                            let artifacts: any[] = value1.data.artifacts
+                            if (artifacts.length > 0) {
+                                build.artifact = value1.data.artifacts[0].relativePath
+                            }
+                        }
+
                         count++;
                         if (count === builds.length - 1) {
                             resolve(builds)

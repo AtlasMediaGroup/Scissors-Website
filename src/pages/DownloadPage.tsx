@@ -48,7 +48,7 @@ const DownloadPage = () => {
             <ul className={"builds"}>
                 {jobs.get(Array.from(jobs.keys()).filter(value => value.name === version)[0])?.map(value => {
                     return <li>
-                        <Button href={value.url}>#{value.number}</Button>
+                        <Button href={value.artifact ? `${value.url}/artifact/${value.artifact}` : value.url}>#{value.number}</Button>
                         <ul className={`changes-${value.number}`}>
                             {value.changes?.map(value1 => {
                                 return <li>[<a href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>
