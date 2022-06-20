@@ -18,7 +18,6 @@ ul {
 
 .builds {
     padding: 0;
-    margin: 10px 0px 10px 0px;
     flex-direction: column;
     background-color: #363534;
 }
