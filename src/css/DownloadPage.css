@@ -13,16 +13,14 @@ ul {
     flex-direction: row;
     justify-content: space-around;
     display: flex;
+    margin-top: 1rem;
 }
 
 .builds {
     padding: 0;
-    margin: 0;
-    background-color: #363534;
-}
-
-.builds {
+    margin: 10px 0px 10px 0px;
     flex-direction: column;
+    background-color: #363534;
 }
 
 .builds > li {
@@ -78,7 +76,7 @@ ul[class^="changes-"] > li > a {
     float: right;
     right: 10vw;
     position: relative;
-    bottom: 2.5vh;
+    bottom: 2vh;
 }
 
 .nochanges {
