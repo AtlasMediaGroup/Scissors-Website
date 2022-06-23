@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/HomePage.css"
 import { Build, getBuilds, getJobs, Job } from "../util/Jenkins";
 
@@ -9,7 +9,7 @@ import { Container } from "react-bootstrap";
 
 const DownloadPage = () => {
     const [jobs, setJobs] = useState(new Map<Job, Build[]>())
-    const [ version, setVersion ] = useState("1.19")
+    const [version, setVersion] = useState("1.19")
     useEffect(() => {
         doJobs().then(value => {
         })
@@ -21,7 +21,7 @@ const DownloadPage = () => {
                 for (let job of value) {
                     getBuilds(job.name).then(value1 => {
                         setJobs(prevState => {
-                            let map = new Map<Job, Build[]>([ ...prevState, [ job, value1 ] ])
+                            let map = new Map<Job, Build[]>([...prevState, [job, value1]])
                             if (map.size >= value.length) {
                                 let job = Array.from(map.keys()).sort((a, b) => parseFloat(a.name) - parseFloat(b.name)).reverse()[0]
                                 setVersion(job.name)
