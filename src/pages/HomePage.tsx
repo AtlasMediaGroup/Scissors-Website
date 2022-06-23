@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { Button, Nav, Navbar, NavLink } from "react-bootstrap";
 import "../css/HomePage.css"
 
 const HomePage = () => {
