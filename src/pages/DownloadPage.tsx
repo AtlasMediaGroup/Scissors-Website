@@ -81,7 +81,7 @@ const DownloadPage = () => {
                                 return <li>[<a href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>
                             })}
                         </ul>
-                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{new Date(value.timestamp!).toISOString().split("T")[0]}</span>
+                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{new Date(value.timestamp!).toLocaleString()}</span>
                     </li>
                 })}
             </ul>
