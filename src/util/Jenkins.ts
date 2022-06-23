@@ -20,9 +20,10 @@ export type BuildChange = {
     comment: string,
     id: string,
 }
+
 export function getJobs(): Promise<Job[]> {
     let jobs: Job[] = []
-    let request = axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/api/json`)
+    let request = axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/api/json?pretty=true`)
 
     return new Promise((resolve, reject) => {
         request.then(value => {
@@ -34,14 +35,14 @@ export function getJobs(): Promise<Job[]> {
 
 export function getBuilds(version: string): Promise<Build[]> {
     let builds: Build[] = []
-    let request = axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/job/${version}/api/json`)
+    let request = axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/job/${version}/api/json?pretty=true`)
 
     return new Promise((resolve, reject) => {
         request.then(value => {
             builds = value.data.builds as Build[]
             let count = 0;
             for (let build of builds) {
-                axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/job/${version}/${build.number}/api/json`).then(value1 => {
+                axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/job/${version}/${build.number}/api/json?pretty=true`).then(value1 => {
                     build.timestamp = value1.data.timestamp
                     let changeSet: any[] = value1.data.changeSets
                     if (changeSet.length > 0) {
