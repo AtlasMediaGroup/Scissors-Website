@@ -42,6 +42,7 @@ export function getBuilds(version: string): Promise<Build[]> {
             builds = value.data.builds as Build[]
             for (let build of builds) {
                 axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/job/${version}/${build.number}/api/json?pretty=true`).then(value1 => {
+                    build.timestamp = value1.data.timestamp
                     let changeSet: any[] = value1.data.changeSets
                     if (changeSet.length > 0) {
                         let changes = changeSet[0].items as BuildChange[]
