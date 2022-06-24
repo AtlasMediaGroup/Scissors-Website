@@ -8,8 +8,6 @@ import { Alert } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import dayjs from "dayjs";
 
-// Currently the timestamp here is undefined regardless of jenkins timestamp!
-
 const DownloadPage = () => {
     const [jobs, setJobs] = useState(new Map<Job, Build[]>())
     const [version, setVersion] = useState("1.19")
@@ -82,7 +80,7 @@ const DownloadPage = () => {
                                 return <li>[<a href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>
                             })}
                         </ul>
-                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{dayjs(value.timestamp!).format("MM/DD/YYYY [at] h:mm A")}</span>
+                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{dayjs(value.timestamp!).format("MM/DD/YYYY [at] hh:mm A")}</span>
                     </li>
                 })}
             </ul>

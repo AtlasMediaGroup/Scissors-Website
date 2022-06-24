@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+th, td {
+    color: white;
+}
+
 ul > li {
     color: white;
 }
@@ -17,14 +21,16 @@ ul {
 }
 
 .builds {
+    margin: 0 auto;
     padding: 0;
     flex-direction: column;
     background-color: #363534;
+    width: 80%;
 }
 
 .builds > li {
-    padding-left: 1vw;
-    height: 10vh;
+    padding-left: 25px;
+    height: 95px;
     width: 100%;
     border-bottom: 2px solid black;
     display: table;
@@ -32,9 +38,9 @@ ul {
 }
 
 .builds > li > .btn {
-    border-radius: 1vh !important;
+    border-radius: 10px !important;
     position: relative;
-    top: 3vh;
+    top: 28px;
 }
 
 .selected {
@@ -57,11 +63,11 @@ ul[class^="changes-"] > li {
     flex-wrap: nowrap;
     margin: 0;
     padding: 0;
-    font-size: 0.75vw;
+    font-size: 15px;
     position: relative;
-    bottom: 1vh;
-    left: 2vw;
-    width: 50%;
+    bottom: 3px;
+    left: 38px;
+    width: 75%;
 }
 
 ul[class^="changes-"] > li > a {
@@ -73,9 +79,9 @@ ul[class^="changes-"] > li > a {
 .date {
     display: table-cell;
     float: right;
-    right: 10vw;
+    right: 75px;
     position: relative;
-    bottom: 2vh;
+    bottom: 25px;
 }
 
 .nochanges {
@@ -84,13 +90,23 @@ ul[class^="changes-"] > li > a {
 }
 
 @media only screen and (max-width: 768px) {
+    .builds {
+        width: 100%;
+    }
+
     ul[class^="changes-"] > li {
         position: relative;
-        left: 5vw;
-        font-size: 3vw;
+        left: 30px;
+        font-size: 13px;
+    }
+
+    .date {
+        right: 20px;
+        bottom: 28px;
+        font-size: 13px;
     }
 
     .nochanges {
-        bottom: 1vh;
+        bottom: 11px;
     }
 }
