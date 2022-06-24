@@ -6,6 +6,7 @@ import "../css/DownloadPage.css"
 import { Button } from "react-bootstrap";
 import { Alert } from "react-bootstrap";
 import { Container } from "react-bootstrap";
+import dayjs from "dayjs";
 
 // Currently the timestamp here is undefined regardless of jenkins timestamp!
 
@@ -45,7 +46,7 @@ const DownloadPage = () => {
     }
 
     return (
-        <Container fluid className="p-4">
+        <Container fluid className="p-sm-0 p-md-4">
             <Alert variant="secondary">
                 <Alert.Heading>Scissors Downloads</Alert.Heading>
                 <p>
@@ -81,7 +82,7 @@ const DownloadPage = () => {
                                 return <li>[<a href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>
                             })}
                         </ul>
-                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{new Date(value.timestamp!).toLocaleString()}</span>
+                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{dayjs(value.timestamp!).format("MM/DD/YYYY [at] h:mm A")}</span>
                     </li>
                 })}
             </ul>

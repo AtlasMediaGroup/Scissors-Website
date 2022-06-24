@@ -90,10 +90,6 @@ ul[class^="changes-"] > li > a {
         font-size: 3vw;
     }
 
-    .date {
-        bottom: 3.75vh;
-    }
-
     .nochanges {
         bottom: 1vh;
     }
