@@ -1,11 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200&display=swap');
 
-body {
+* {
     margin: 0;
+    padding: 0;
+    font-family: 'IMB Plex Sans', sans-serif;
+    box-sizing: border-box;
 }
 
-th, td {
-    color: white;
+.download_section {
+    margin-top: 100px;
+}
+
+.versions {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.selected {
+    border-bottom: aqua 1.5px solid;
+}
+
+.selectable {
+    cursor: pointer;
+    border-bottom: lightslategray 1.5px solid;
+}
+
+container {
+    width: 100%;
 }
 
 ul > li {
@@ -20,93 +41,58 @@ ul {
     margin-top: 1rem;
 }
 
-.builds {
+table {
     margin: 0 auto;
-    padding: 0;
-    flex-direction: column;
-    background-color: #363534;
-    width: 80%;
-}
-
-.builds > li {
-    padding-left: 25px;
-    height: 95px;
-    width: 100%;
-    border-bottom: 2px solid black;
-    display: table;
-    flex-wrap: nowrap;
-}
-
-.builds > li > .btn {
-    border-radius: 10px !important;
-    position: relative;
-    top: 28px;
-}
-
-.selected {
-    border-bottom: aqua 1px solid;
-}
-
-.selectable {
-    cursor: pointer;
-}
-
-ul[class^="changes-"] {
-    justify-content: left;
-    flex-direction: column;
-    margin: 0;
-    flex-wrap: nowrap;
-    align-content: flex-start;
-}
-
-ul[class^="changes-"] > li {
-    flex-wrap: nowrap;
-    margin: 0;
-    padding: 0;
-    font-size: 15px;
-    position: relative;
-    bottom: 3px;
-    left: 38px;
     width: 75%;
 }
 
-ul[class^="changes-"] > li > a {
+tr:nth-child(odd) {
+    background-color: #3c3c3c;
+}
+
+td {
+    height: 70px;
+    color: white;
+}
+
+.commits {
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.commit_id {
     text-decoration: none;
     color: #91ffaf;
-    margin: 0;
 }
 
-.date {
-    display: table-cell;
-    float: right;
-    right: 75px;
-    position: relative;
-    bottom: 25px;
+.commit_id:hover {
+    text-decoration: underline;
+    color: #91ffaf;
 }
 
-.nochanges {
-    position: relative;
-    bottom: 0;
-}
+@media (max-width: 768px) {
+    .versions {
+        width: 80%;
+    }
 
-@media only screen and (max-width: 768px) {
-    .builds {
+    table {
+        margin: 0 auto;
         width: 100%;
     }
 
-    ul[class^="changes-"] > li {
-        position: relative;
-        left: 30px;
-        font-size: 13px;
+    .download_section {
+        font-size: 15px;
+    }
+
+    .download {
+        margin-left: 10px;
+    }
+
+    .commits {
+        text-align: center;
     }
 
     .date {
-        right: 20px;
-        bottom: 28px;
-        font-size: 13px;
-    }
-
-    .nochanges {
-        bottom: 11px;
+        display: none; 
     }
 }

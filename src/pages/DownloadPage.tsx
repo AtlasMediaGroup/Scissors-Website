@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "../css/HomePage.css"
-import { Build, getBuilds, getJobs, Job } from "../util/Jenkins";
+import dayjs from "dayjs";
+import { useEffect, useState } from "react"
+import { Container, Button } from "react-bootstrap"
 
 import "../css/DownloadPage.css"
-import { Button } from "react-bootstrap";
-import { Alert } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import dayjs from "dayjs";
+import { Build, getBuilds, getJobs, Job } from "../util/Jenkins";
 
 const DownloadPage = () => {
     const [jobs, setJobs] = useState(new Map<Job, Build[]>())
@@ -39,53 +36,45 @@ const DownloadPage = () => {
         })
     }
 
-    function onClick(event: React.MouseEvent<HTMLLIElement>) {
-        setVersion(event.currentTarget.innerHTML)
-    }
-
     return (
-        <Container fluid className="p-sm-0 p-md-4">
-            <Alert variant="secondary">
-                <Alert.Heading>Scissors Downloads</Alert.Heading>
-                <p>
-                    You may download builds of Scissors from here. Select the version you would like below. If the downloads page is not working, please use our <a href="https://ci.scissors.gg/job/Scissors">CI Server</a> instead.
-                </p>
-                <hr />
-                <p className="mb-0">
-                    P.S. If you know React, PLEASE help us make this look better. Our code is <a href="https://github.com/AtlasMediaGroup/Scissors-Website/tree/master">here</a>.
-                </p>
-            </Alert>
-            <ul className="versions">
-                {Array.from(jobs.keys()).sort(function(x, y) {
-                    let x1 = x.name.split(".")
-                    let y1 = y.name.split(".")
-                    if (x1.length >= 3) {
-                        x1 = x1.slice(0, x1.length - 1)
-                    }
-                    if (y1.length >= 3) {
-                        y1 = y1.slice(0, y1.length - 1)
-                    }
-                    return y1.join(".") > x1.join(".") ? 1 : -1
-                }).map(value => {
-                    return <li className={version === value.name ? "selected" : "selectable"}
-                        onClick={onClick}>{value.name}</li>
-                })}
-            </ul>
-            <ul className="builds">
-                {jobs.get(Array.from(jobs.keys()).filter(value => value.name === version)[0])?.map(value => {
-                    return <li>
-                        <Button href={value.artifact ? `${value.url}/artifact/${value.artifact}` : value.url}>#{value.number}</Button>
-                        <ul className={`changes-${value.number}`}>
-                            {value.changes?.map(value1 => {
-                                return <li>[<a href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>
-                            })}
-                        </ul>
-                        <span className={value.changes && value.changes?.length > 0 ? "date" : "date nochanges"}>{dayjs(value.timestamp!).format("MM/DD/YYYY [at] hh:mm A")}</span>
-                    </li>
-                })}
-            </ul>
-        </Container >
-    );
+        <Container fluid>
+            <div className="header">
+                <h1>Scissors Downloads</h1>
+            </div>
+            <br/>
+            <div className="download_section">
+                <ul className="versions">
+                    {Array.from(jobs.keys()).sort(function(x, y) {
+                        let x1 = x.name.split(".")
+                        let y1 = y.name.split(".")
+                        if (x1.length >= 3) {
+                            x1 = x1.slice(0, x1.length - 1)
+                        }
+                        if (y1.length >= 3) {
+                            y1 = y1.slice(0, y1.length - 1)
+                        }
+                        return y1.join(".") > x1.join(".") ? 1 : -1
+                    }).map(job => {
+                        return <li key={job.name} className={version === job.name ? "selected" : "selectable"} onClick={() => setVersion(job.name)}>{job.name}</li>
+                    })}
+                </ul>
+                <br/><br/>
+                <table className="downloads">
+                    <tbody>
+                    {jobs.get(Array.from(jobs.keys()).filter(value => value.name == version)[0])?.map(value => {
+                        return <tr key={value.number}>
+                            <td align="center"><Button className="download" href={value.artifact ? `${value.url}/artifact/${value.artifact}` : value.url}>#{value.number}</Button></td>
+                            <td className="commits"><ul>{value.changes?.map(value1 => {
+                                return (<li key={value1.id}>[<a className="commit_id" href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>)
+                            })}</ul></td>
+                            <td className="date" align="center">{dayjs(value.timestamp!).format("MM/DD/YYYY [at] hh:mm A")}</td>
+                        </tr>
+                    })}
+                    </tbody>
+                </table>
+            </div>
+        </Container>
+    )
 }
 
-export default DownloadPage;
+export default DownloadPage
