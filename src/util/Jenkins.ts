@@ -32,7 +32,6 @@ export function getJobs(): Promise<Job[]> {
         }).catch(() => reject)
     })
 }
-
 export function getBuilds(version: string): Promise<Build[]> {
     let builds: Build[] = []
     let request = axios.get(`${JENKINS_URL}/${ARTIFACT_NAME}/job/${version}/api/json?pretty=true`)
@@ -46,22 +45,30 @@ export function getBuilds(version: string): Promise<Build[]> {
                     let changeSet: any[] = value1.data.changeSets
                     if (changeSet.length > 0) {
                         let changes = changeSet[0].items as BuildChange[]
-                        for (let change of changes) {
-                            change.id = change.id.substring(0, 7)
+                        if (changes.length > 0) {
+                            for (let change of changes) {
+                                change.id = change.id.substring(0, 7)
+                            }
                         }
                         build.changes = changes
                         if (value1.data.artifacts) {
                             let artifacts: any[] = value1.data.artifacts
                             if (artifacts.length > 0) {
-                                build.artifact = value1.data.artifacts[0].relativePath
+                                build.artifact = artifacts[0].relativePath
                             }
                         }
-
-                        resolve(builds)
+                    } else {
+                        let changes: BuildChange[] = []
+                        changes.push({
+                            id: "x",
+                            comment: "No changes"
+                        })
+                        build.changes = changes
                     }
+
+                    resolve(builds)
                 })
             }
         }).catch(() => reject)
     })
 }
-

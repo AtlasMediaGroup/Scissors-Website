@@ -41,10 +41,10 @@ const DownloadPage = () => {
             <div className="header">
                 <h1>Scissors Downloads</h1>
             </div>
-            <br/>
+            <br />
             <div className="download_section">
                 <ul className="versions">
-                    {Array.from(jobs.keys()).sort(function(x, y) {
+                    {Array.from(jobs.keys()).sort(function (x, y) {
                         let x1 = x.name.split(".")
                         let y1 = y.name.split(".")
                         if (x1.length >= 3) {
@@ -58,18 +58,18 @@ const DownloadPage = () => {
                         return <li key={job.name} className={version === job.name ? "selected" : "selectable"} onClick={() => setVersion(job.name)}>{job.name}</li>
                     })}
                 </ul>
-                <br/><br/>
+                <br /><br />
                 <table className="downloads">
                     <tbody>
-                    {jobs.get(Array.from(jobs.keys()).filter(value => value.name == version)[0])?.map(value => {
-                        return <tr key={value.number}>
-                            <td align="center"><Button className="download" href={value.artifact ? `${value.url}/artifact/${value.artifact}` : value.url}>#{value.number}</Button></td>
-                            <td className="commits"><ul>{value.changes?.map(value1 => {
-                                return (<li key={value1.id}>[<a className="commit_id" href={`https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>)
-                            })}</ul></td>
-                            <td className="date" align="center">{dayjs(value.timestamp!).format("MM/DD/YYYY [at] hh:mm A")}</td>
-                        </tr>
-                    })}
+                        {jobs.get(Array.from(jobs.keys()).filter(value => value.name == version)[0])?.map(value => {
+                            return <tr key={value.number}>
+                                <td align="center"><Button className="download" href={value.artifact ? `${value.url}/artifact/${value.artifact}` : value.url}>#{value.number}</Button></td>
+                                <td className="commits"><ul>{value.changes?.map(value1 => {
+                                    return (<li key={value1.id}>[<a className="commit_id" href={value1.id !== "x" ? `https://github.com/AtlasMediaGroup/Scissors/commit/${value1.id}` : `https://github.com/AtlasMediaGroup/Scissors/tree/${version}`}>{value1.id}</a>]&nbsp;&nbsp;{value1.comment}</li>)
+                                })}</ul></td>
+                                <td className="date" align="center">{dayjs(value.timestamp!).format("MM/DD/YYYY [at] hh:mm A")}</td>
+                            </tr>
+                        })}
                     </tbody>
                 </table>
             </div>
