@@ -10,8 +10,7 @@ const DownloadPage = () => {
     const [version, setVersion] = useState("1.19")
     const versions = ["1.17.1", "1.18.2", "1.19"]
     useEffect(() => {
-        doJobs().then(value => {
-        })
+        doJobs()
     }, [])
 
     function doJobs(): Promise<void> {
@@ -25,9 +24,7 @@ const DownloadPage = () => {
 
                     getBuilds(job.name).then(value1 => {
                         setJobs(prevState => {
-                            let newState = new Map(prevState)
-                            newState.set(job, value1)
-                            return newState
+                            return new Map(prevState).set(job, value1)
                         })
                         resolve()
                     })
@@ -47,10 +44,10 @@ const DownloadPage = () => {
                     {Array.from(jobs.keys()).sort(function (x, y) {
                         let x1 = x.name.split(".")
                         let y1 = y.name.split(".")
-                        if (x1.length >= 3) {
+                        if (x1.length === 3) {
                             x1 = x1.slice(0, x1.length - 1)
                         }
-                        if (y1.length >= 3) {
+                        if (y1.length === 3) {
                             y1 = y1.slice(0, y1.length - 1)
                         }
                         return y1.join(".") > x1.join(".") ? 1 : -1
@@ -61,7 +58,7 @@ const DownloadPage = () => {
                 <br /><br />
                 <table className="downloads">
                     <tbody>
-                        {jobs.get(Array.from(jobs.keys()).filter(value => value.name == version)[0])?.map(value => {
+                        {jobs.get(Array.from(jobs.keys()).filter(value => value.name === version)[0])?.map(value => {
                             return <tr key={value.number}>
                                 <td align="center"><Button className="download" href={value.artifact ? `${value.url}/artifact/${value.artifact}` : value.url}>#{value.number}</Button></td>
                                 <td className="commits"><ul>{value.changes?.map(value1 => {

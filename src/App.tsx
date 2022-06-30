@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { Button, Nav, Navbar, NavLink, NavDropdown, Container } from "react-bootstrap";
