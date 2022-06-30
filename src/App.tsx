@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import { Button, Nav, Navbar, NavLink } from "react-bootstrap";
+import { Button, Nav, Navbar, NavLink, NavDropdown, Container } from "react-bootstrap";
 
 import "./css/App.css"
 import DownloadPage from "./pages/DownloadPage";
@@ -9,13 +9,27 @@ import DownloadPage from "./pages/DownloadPage";
 function App() {
     return (
         <BrowserRouter>
-            <Navbar bg={"dark"} variant={"dark"}>
-                <Navbar.Brand className={"ms-5"} href={"/"}>Scissors</Navbar.Brand>
-                <Nav className={"me-auto"}>
-                    <NavLink href={"https://github.com/AtlasMediaGroup/Scissors"}>Source</NavLink>
-                    <NavLink href={"https://status.scissors.gg"}>Status</NavLink>
-                </Nav>
-                <Button variant={"primary"} className={"me-5 download-button"} href={"/downloads"} style={{ borderRadius: "2vh" }}><img src={"download-icon.png"} width={"25px"} alt={"download"} />  Download</Button>
+            <Navbar variant="dark" bg="dark">
+                <Container fluid>
+                    <Navbar.Brand className={"ms-5"} href={"/"}>Scissors</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbar-dark-example" />
+                    <Navbar.Collapse id="navbar-dark-example">
+                        <Nav className={"me-auto"}>
+                            <NavDropdown
+                                id="nav-dropdown-dark-example"
+                                title="Source"
+                                menuVariant="dark">
+                                <NavDropdown.Item href="https://github.com/AtlasMediaGroup/Scissors">Scissors</NavDropdown.Item>
+                                <NavDropdown.Item href="https://github.com/AtlasMediaGroup/Scissors-Website">Website</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="https://git.telesphoreo.me/AtlasMediaGroup/Scissors">Scissors (Mirror)</NavDropdown.Item>
+                                <NavDropdown.Item href="https://git.telesphoreo.me/AtlasMediaGroup/Scissors-Website">Website (Mirror)</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavLink href={"https://status.scissors.gg"}>Status</NavLink>
+                        </Nav>
+                    </Navbar.Collapse>
+                    <Button variant={"primary"} className={"me-5 download-button"} href={"/downloads"} style={{ borderRadius: "2vh" }}><img src={"download-icon.png"} width={"25px"} alt={"download"} />  Download</Button>
+                </Container>
             </Navbar>
             <Routes>
                 <Route path={"/"} element={<HomePage />} />
