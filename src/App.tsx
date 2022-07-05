@@ -24,6 +24,15 @@ function App() {
                                 <NavDropdown.Item href="https://git.telesphoreo.me/AtlasMediaGroup/Scissors">Scissors (Mirror)</NavDropdown.Item>
                                 <NavDropdown.Item href="https://git.telesphoreo.me/AtlasMediaGroup/Scissors-Website">Website (Mirror)</NavDropdown.Item>
                             </NavDropdown>
+                            <NavDropdown
+                                id="nav-dropdown-dark-example"
+                                title="Javadocs"
+                                menuVariant="dark">
+                                <NavDropdown.Item href="https://scissors.gg/javadoc/1.19">1.19</NavDropdown.Item>
+                                <NavDropdown.Item href="https://scissors.gg/javadoc/1.18.2">1.18.2</NavDropdown.Item>
+                                <NavDropdown.Item href="https://scissors.gg/javadoc/1.17.1">1.17.1</NavDropdown.Item>
+                            </NavDropdown>
+
                             <NavLink href={"https://status.scissors.gg"}>Status</NavLink>
                         </Nav>
                     </Navbar.Collapse>
