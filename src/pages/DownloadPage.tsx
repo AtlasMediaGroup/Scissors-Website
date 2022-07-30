@@ -7,8 +7,8 @@ import { Build, getBuilds, getJobs, Job } from "../util/Jenkins";
 
 const DownloadPage = () => {
     const [jobs, setJobs] = useState(new Map<Job, Build[]>())
-    const [version, setVersion] = useState("1.19")
-    const versions = ["1.17.1", "1.18.2", "1.19"]
+    const [version, setVersion] = useState("1.19.1")
+    const versions = ["1.17.1", "1.18.2", "1.19.1"]
     useEffect(() => {
         doJobs()
     }, [])
