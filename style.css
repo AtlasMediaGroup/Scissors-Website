@@ -10,15 +10,18 @@ h1, h4, h5 {
     text-align: center;
     position: relative;
     font-family: 'IBM Plex Sans', sans-serif;
+    top: 10vh;
 }
 
 h1 {
-    top: 10vh;
     font-weight: bolder;
 }
 
-h4, h5 {
+.download-button {
+    text-align: center;
+    position: relative;
     top: 10vh;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 @media only screen and (max-width: 768px) {
