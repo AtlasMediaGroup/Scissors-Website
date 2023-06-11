@@ -5,14 +5,15 @@
     <title>Scissors</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <meta name="description"
         content="The official website for the Minecraft server software, Scissors, which aims to patch creative mode exploits">
     <script src="script.js"></script>
+    <script src="fetch.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -68,12 +69,11 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="https://ci.plex.us.org/job/Scissors">Jenkins</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="https://status.scissors.gg">Status</a>
                     </li>
-                    <form action="https://ci.scissors.gg/job/Scissors" class="container-fluid">
-                        <button class="btn btn-outline-primary ms-auto justify-content-end"
-                            type="submit">Download</button>
-                    </form>
                 </ul>
             </div>
         </div>
@@ -81,12 +81,17 @@
     <h1>Scissors</h1>
     <h4>Minecraft server software oriented towards patching Creative Mode exploits.</h4>
     <h4>Latest version: 1.20</h4>
-    <form
-        action="https://ci.scissors.gg/job/Scissors/job/1.19.4/lastSuccessfulBuild/artifact/build/libs/Scissors-paperclip-1.19.4-R0.1-SNAPSHOT-reobf.jar"
-        class="container-fluid download-button">
-        <button class="btn btn-success" type="submit">Download latest build</button>
-    </form>
-    <h5>Previous versions: 1.17.1, 1.18.2, 1.19.4</h5>
+    <div class="container-fluid download-button">
+        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Download latest build
+        </button>
+        <ul class="dropdown-menu">
+            <li><button class="dropdown-item" type="button" onclick="generateURL('1.20')">1.20</button></li>
+            <li><button class="dropdown-item" type="button" onclick="generateURL('1.19.4')">1.19.4</button></li>
+            <li><button class="dropdown-item" type="button" onclick="generateURL('1.18.2')">1.18.2</button></li>
+            <li><button class="dropdown-item" type="button" onclick="generateURL('1.17.1')">1.17.1</button></li>
+        </ul>
+    </div>
 </body>
 
 </html>
