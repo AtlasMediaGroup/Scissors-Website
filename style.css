@@ -24,6 +24,15 @@ h1 {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.supported-table {
+    text-align: center;
+    position: relative;
+    top: 10vh;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
 @media only screen and (max-width: 768px) {
     h1 {
         font-size: 7vw;

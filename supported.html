@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Scissors</title>
+    <title>Supported Versions - Scissors</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,7 +20,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand navbar-font" href="#">Scissors</a>
+            <a class="navbar-brand navbar-font" href="index.html">Scissors</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -78,19 +78,43 @@
             </div>
         </div>
     </nav>
-    <h1>Scissors</h1>
-    <h4>Minecraft server software oriented towards patching Creative Mode exploits.</h4>
-    <h4>Click <a href="supported.html">here</a> to see a list of supported versions.</h4>
-    <div class="container-fluid download-button">
-        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Download latest build
-        </button>
-        <ul class="dropdown-menu">
-            <li><button class="dropdown-item" type="button" onclick="generateURL('1.20.1')">1.20.1</button></li>
-            <li><button class="dropdown-item" type="button" onclick="generateURL('1.19.4')">1.19.4</button></li>
-            <li><button class="dropdown-item" type="button" onclick="generateURL('1.18.2')">1.18.2 (EOL)</button></li>
-            <li><button class="dropdown-item" type="button" onclick="generateURL('1.17.1')">1.17.1</button></li>
-        </ul>
+    <h1>Supported Versions</h1>
+    <div class="supported-table">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Version</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.20.1</td>
+                    <td>Supported (Latest)</td>
+                </tr>
+                <tr>
+                    <td>1.20</td>
+                    <td>Unsupported</td>
+                </tr>
+                <tr>
+                    <td>1.19.4</td>
+                    <td>Supported</td>
+                </tr>
+                <tr>
+                    <td>1.19.3</td>
+                    <td>Unsupported</td>
+                </tr>
+                <tr>
+                    <td>1.18.2</td>
+                    <td>Unsupported</td>
+                </tr>
+                <tr>
+                    <td>1.17.1</td>
+                    <td>Supported</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Note: Unsupported versions may still get maintenance updates. Backports of patches and features is not guaranteed between versions.</p>
     </div>
 </body>
 
